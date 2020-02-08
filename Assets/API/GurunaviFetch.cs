@@ -21,11 +21,24 @@ public class GurunaviFetch : MonoBehaviour
     {
         StartCoroutine(GETRequest($"https://api.gnavi.co.jp/RestSearchAPI/v3/?keyid=8446b8f3a55150243fe036fa0fa7b8d3&latitude={latitude}&longitude={longitude}"));
     }
-
-    public void FetchImage(string id)
+    public void Query(double latitude, double longitude, string keyword)
     {
-
+        string free = "";
+        if(keyword == "和食")
+        {
+            free = "%E5%92%8C%E9%A3%9F";
+        }
+        if (keyword == "フレンチ")
+        {
+            free = "%E3%83%95%E3%83%AC%E3%83%B3%E3%83%81";
+        }
+        if (keyword == "居酒屋")
+        {
+            free = "%E5%B1%85%E9%85%92%E5%B1%8B";
+        }
+        StartCoroutine(GETRequest($"https://api.gnavi.co.jp/RestSearchAPI/v3/?keyid=8446b8f3a55150243fe036fa0fa7b8d3&latitude={latitude}&longitude={longitude}&freeword={}"));
     }
+
 
     public Vector2 GetStorePosition(string id)
     {
