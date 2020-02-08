@@ -37,8 +37,8 @@ public class PutStoreIcon : MonoBehaviour
         }
         foreach(var storedata in GurunaviFetch.Gurunavis)
         {
-            float pos_x = (float)(storedata.Latitude - BaseLatitude) * 111000.5f;
-            float pos_z = (float)(storedata.Longitude - BaseLongitude) * 111000.5f;
+            float pos_x = (float)(storedata.Latitude - BaseLatitude) * 111000f;
+            float pos_z = (float)(storedata.Longitude - BaseLongitude) * 111000f;
 
             Instantiate(icon, new Vector3(pos_x, 0, pos_z), Quaternion.identity);
             positions.Add(storedata.Name, new Vector3(pos_x, 0, pos_z));
