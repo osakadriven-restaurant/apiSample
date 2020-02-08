@@ -21,8 +21,13 @@ public class GurunaviFetch : MonoBehaviour
     {
         StartCoroutine(GETRequest($"https://api.gnavi.co.jp/RestSearchAPI/v3/?keyid=8446b8f3a55150243fe036fa0fa7b8d3&latitude={latitude}&longitude={longitude}"));
     }
-    public void Query(double latitude, double longitude, string keyword)
+    public void Query(double latitude, double longitude, string keyword, bool far)
     {
+        int range = 2;
+        if (far)
+        {
+            range = 3;
+        }
         string free = "";
         if(keyword == "和食")
         {
@@ -36,7 +41,7 @@ public class GurunaviFetch : MonoBehaviour
         {
             free = "%E5%B1%85%E9%85%92%E5%B1%8B";
         }
-        StartCoroutine(GETRequest($"https://api.gnavi.co.jp/RestSearchAPI/v3/?keyid=8446b8f3a55150243fe036fa0fa7b8d3&latitude={latitude}&longitude={longitude}&freeword={}"));
+        StartCoroutine(GETRequest($"https://api.gnavi.co.jp/RestSearchAPI/v3/?keyid=8446b8f3a55150243fe036fa0fa7b8d3&latitude={latitude}&longitude={longitude}&freeword={free}&range={range}"));
     }
 
 
